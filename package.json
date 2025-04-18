@@ -4,7 +4,8 @@
   "description": "A Python implementation of the Video Indexer MCP server that provides tools and resources for interacting with Video Indexer services.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "inspector": "npx @modelcontextprotocol/inspector python src/main.py"
   },
   "keywords": [],
   "author": "",

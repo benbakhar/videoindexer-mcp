@@ -1,15 +1,11 @@
 # Video Indexer MCP Server
 
-A Python implementation of the Video Indexer MCP server that provides tools and resources for interacting with Video Indexer services.
+A Python implementation of the Video Indexer MCP server that provides tools and resources for interacting with Video Indexer APIs.
 
 ## Features
 
 - Tools:
-  - `create_note`: Create a new note with title and content
   - `upload_video`: Upload a video to Video Indexer with specified preset
-
-- Resources:
-  - Account information with JWT-based authentication
 
 - Resource Templates:
   - Video search functionality
@@ -18,33 +14,42 @@ A Python implementation of the Video Indexer MCP server that provides tools and 
 ## Installation
 
 1. Clone the repository
-2. Install dependencies:
+2. Create and activate a Python virtual environment:
+```bash
+# Create virtual environment
+python -m venv mcp-env
+
+# Activate virtual environment
+# On Windows:
+mcp-env\Scripts\activate
+# On Unix or MacOS:
+source mcp-env/bin/activate
+```
+
+3. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
-3. Install the package:
+4. Install the package:
 ```bash
 pip install -e .
 ```
 
+5. To deactivate the virtual environment when you're done:
+```bash
+deactivate
+```
+
 ## Configuration
 
-Create a `.env` file in the project root with the following variables:
-```
-VI_ACCOUNT_TOKEN=your_jwt_token_here
-```
+Add your VI account token to `cline_mcp_settings.json`:
 
 ## Usage
 
 Start the server:
 ```bash
-python -m src.server
+python -m src./main.py
 ```
-
-The server will start and listen for MCP requests, providing:
-- Tool endpoints for note creation and video uploads
-- Resource endpoints for account information
-- Resource template endpoints for video search and prompt content
 
 ## Development
 

@@ -1,11 +1,4 @@
-from typing import Dict, Any
-from modelcontextprotocol_sdk.server import Server
-from modelcontextprotocol_sdk.types import (
-    CallToolRequestSchema,
-    ListToolsRequestSchema,
-    McpError,
-    ErrorCode,
-)
+from server import mcp
 
 tools = [
     {
@@ -46,48 +39,11 @@ tools = [
     },
 ]
 
-async def handle_create_note(arguments: Dict[str, Any]) -> Dict[str, Any]:
-    title = arguments.get("title")
-    content = arguments.get("content")
-    note_id = {"title": title, "content": content}
-    
-    return {
-        "content": [
-            {
-                "type": "text",
-                "text": f"Note created with ID {note_id}",
-            }
-        ]
-    }
 
-def setup_tool_handlers(server: Server) -> None:
-    # List available tools
-    @server.request_handler(ListToolsRequestSchema)
-    async def list_tools():
-        return {"tools": tools}
+@mcp.tool()
+def upload_video(url: str, preset: str) -> str:
+    """upload a video to your videoindexer (vi) account"""
+    return f"upload video: {url} with preset: {preset}"
 
-    # Handle tool calls
-    @server.request_handler(CallToolRequestSchema)
-    async def call_tool(request: Dict[str, Any]):
-        tool_name = request["params"]["name"]
-        arguments = request["params"].get("arguments")
 
-        if tool_name not in [tool["name"] for tool in tools]:
-            raise McpError(
-                ErrorCode.MethodNotFound,
-                f"Unknown tool: {tool_name}"
-            )
-
-        if not arguments:
-            raise McpError(
-                ErrorCode.InvalidRequest,
-                "Arguments are required"
-            )
-
-        if tool_name == "create_note":
-            return await handle_create_note(arguments)
-        
-        raise McpError(
-            ErrorCode.MethodNotFound,
-            f"Handler not implemented for tool: {tool_name}"
-        )
+print("Tools loaded successfully")
