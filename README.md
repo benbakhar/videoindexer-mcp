@@ -1,15 +1,36 @@
-# Video Indexer MCP Server
+## Video Indexer MCP Server
+A Model Context Protocol (MCP) server that provides tools and resources for interacting with Video Indexer APIs.
 
-A Python implementation of the Video Indexer MCP server that provides tools and resources for interacting with Video Indexer APIs.
+### Features
 
-## Features
+- `vi_prompt_content`: Generate prompt content from video insights
+- `vi_get_prompt_content`: Get the generated prompt content for a video
 
-- Tools:
-  - `upload_video`: Upload a video to Video Indexer with specified preset
+### Use Cases
 
-- Resource Templates:
-  - Video search functionality
-  - Video prompt content retrieval
+- feed LLMs with video insights
+- Automated API interactions
+
+### example config
+
+```json
+{
+  "mcpServers": {
+    "videoindexer-mcp": {
+      "command": "/path/to/videoindexer-mcp/bin/python",
+      "args": [
+        "/path/to/your/videoindexer-mcp/src/main.py",
+      ],
+      "env": {
+        "VI_ACCOUNT_TOKEN": "<your_video_indexer_account_token>",
+      },
+      "transportType": "stdio"
+    }
+  }
+}
+```
+
+Replace `/path/to/videoindexer-mcp` with the actual path to your videoindexer-mcp directory.
 
 ## Installation
 
@@ -39,42 +60,3 @@ pip install -e .
 ```bash
 deactivate
 ```
-
-## Configuration
-
-Add your VI account token to `cline_mcp_settings.json`:
-
-## Usage
-
-Start the server:
-```bash
-python -m src./main.py
-```
-
-## Development
-
-The project structure:
-```
-videoindexer-mcp/
-├── requirements.txt    # Project dependencies
-├── setup.py           # Package installation configuration
-├── README.md          # Project documentation
-└── src/              
-    ├── __init__.py
-    ├── server.py      # Main server implementation
-    ├── tools.py       # Tool definitions and handlers
-    ├── resources.py   # Resource handlers
-    └── resource_templates.py  # Resource template handlers
-```
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a new Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.

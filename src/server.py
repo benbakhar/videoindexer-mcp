@@ -1,4 +1,4 @@
 from mcp.server.fastmcp import FastMCP
 
-# @NOTE: need touse ERROR level to make it work with cline
+# @NOTE: workaround to a bug with cline. log level must be set to ERROR
 mcp = FastMCP("Video Indexer MCP", log_level="ERROR")

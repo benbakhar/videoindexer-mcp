@@ -1,3 +1,4 @@
 modelcontextprotocol-sdk
 pydantic
 python-dotenv
+httpx

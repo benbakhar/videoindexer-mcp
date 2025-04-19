@@ -1,6 +1,7 @@
 
 import base64
 import json
+import os
 from typing import Dict
 
 
@@ -23,5 +24,15 @@ def extract_jwt(token: str) -> Dict[str, str]:
         decoded_payload = base64.urlsafe_b64decode(payload).decode("utf-8")
         return json.loads(decoded_payload)
     except Exception as e:
-        # Return default values if token parsing fails
-        return {"sub": "1234567890", "name": "Dummy account"}
+        raise ValueError(f"Failed to parse JWT token: {str(e)}")
+
+
+def get_access_token() -> str:
+    """Get the access token from the environment variable."""
+    token = os.getenv("VI_ACCOUNT_TOKEN")
+
+    if not token:
+        raise ValueError(
+            "VI_ACCOUNT_TOKEN environment variable is not set. Please set the VI_ACCOUNT_TOKEN environment variable to your Video Indexer account token.")
+
+    return token

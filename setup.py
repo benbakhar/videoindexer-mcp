@@ -8,6 +8,7 @@ setup(
         "modelcontextprotocol-sdk",
         "pydantic",
         "python-dotenv",
+        "httpx",
     ],
     python_requires=">=3.8",
     entry_points={
@@ -15,7 +16,7 @@ setup(
             "videoindexer-mcp=src.server:main",
         ],
     },
-    author="Microsoft",
+    author="Ben Bakhar",
     description="Video Indexer MCP Server",
-    keywords="mcp, video indexer, server",
+    keywords="mcp, azure ai video indexer, server",
 )
