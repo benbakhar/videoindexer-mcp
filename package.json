@@ -1,13 +1,17 @@
 {
   "name": "videoindexer-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Python implementation of the Video Indexer MCP server that provides tools and resources for interacting with Video Indexer APIs.",
   "scripts": {
     "start": "python src/main.py",
     "inspector": "npx @modelcontextprotocol/inspector python src/main.py",
     "test": "pytest tests/ --doctest-modules --junitxml=junit/test-results.xml"
   },
-  "keywords": ["azure ai video indexer", "mcp", "python"],
+  "keywords": [
+    "azure ai video indexer",
+    "mcp",
+    "python"
+  ],
   "author": "Ben Bakhar",
   "license": "ISC"
 }
