@@ -1,6 +1,6 @@
-from server import mcp
-from services.videoindexer import VideoIndexerService, ModelName, PromptStyle, PromptContentParams
-from utils import get_access_token
+from .server import mcp
+from .services.videoindexer import VideoIndexerService, ModelName, PromptStyle, PromptContentParams
+from .utils import get_access_token
 
 tools = [
     {
