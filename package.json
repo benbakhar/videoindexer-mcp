@@ -5,7 +5,7 @@
   "scripts": {
     "start": "python src/main.py",
     "inspector": "npx @modelcontextprotocol/inspector python src/main.py",
-    "test": "python -m unittest discover tests -v"
+    "test": "pytest tests/ --doctest-modules --junitxml=junit/test-results.xml"
   },
   "keywords": ["azure ai video indexer", "mcp", "python"],
   "author": "Ben Bakhar",

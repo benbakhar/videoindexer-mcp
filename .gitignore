@@ -54,7 +54,7 @@ coverage.xml
 
 # Pytest
 .pytest_cache/
-
+junit/
 # mypy
 .mypy_cache/
 
